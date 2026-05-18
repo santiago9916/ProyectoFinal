@@ -1,28 +1,42 @@
 /*
 almacena la popularidad de una publicacion
 */
-package com.mycompany.proyectofinal3;
+package com.mycompany.proyectfinal;
 
 public class NodoAVL {
-    int popularidad;
-    int publicacionId;
-    int altura;
-    NodoAVL izquierdo;
-    NodoAVL derecho;
 
-    public NodoAVL(int publicacionId, int popularidad) {
+    private int popularidad;
+    private int publicacionId;
+    private int altura;
+
+    private NodoAVL izquierdo;
+    private NodoAVL derecho;
+
+
+    public NodoAVL(int publicacionId,
+                   int popularidad) {
+
         this.publicacionId = publicacionId;
         this.popularidad = popularidad;
         this.altura = 1;
     }
 
-    public NodoAVL(int popularidad, int publicacionId, int altura, NodoAVL izquierdo, NodoAVL derecho) {
+
+    public NodoAVL(int popularidad,
+                   int publicacionId,
+                   int altura,
+                   NodoAVL izquierdo,
+                   NodoAVL derecho) {
+
         this.popularidad = popularidad;
         this.publicacionId = publicacionId;
-        this.altura = 1;
+        this.altura = altura;
+
         this.izquierdo = izquierdo;
         this.derecho = derecho;
     }
+
+
 
     public int getPopularidad() {
         return popularidad;
@@ -63,8 +77,4 @@ public class NodoAVL {
     public void setDerecho(NodoAVL derecho) {
         this.derecho = derecho;
     }
-    
-    
 }
-
-

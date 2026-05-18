@@ -1,19 +1,30 @@
 /*
-representa a un asuario en el sistema
+representa a un usuario en el sistema
 */
 package com.mycompany.proyectfinal;
 
 public class Usuario {
-    int id;
-    String username;
 
+    private int id;
+    private String username;
+
+ 
     public Usuario() {
     }
 
+
     public Usuario(int id, String username) {
+
         this.id = id;
         this.username = username;
     }
+
+
+    public Usuario(String username) {
+
+        this.username = username;
+    }
+
 
     public int getId() {
         return id;
@@ -30,6 +41,4 @@ public class Usuario {
     public void setUsername(String username) {
         this.username = username;
     }
-    
-    
 }

@@ -30,13 +30,11 @@ public class UserManager {
     public void registrarUsuarios(String username) {
 
         if (usuarios.containsKey(username)) {
-
             System.out.println("El usuario ya existe :( ");
 
         } else {
 
-            Usuario nuevoUsuario =
-                new Usuario(username);
+            Usuario nuevoUsuario = new Usuario(username);
 
             /*
             Guarda el usuario en el HashMap

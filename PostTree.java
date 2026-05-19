@@ -1,55 +1,47 @@
-package com.mycompany.proyectfinal;
-
+package com.mycompany.proyectofinal3;
 public class PostTree {
 
-    public NodoArbol contenidoRaiz;
-
-    public PostTree(Publicacion p) {
-
-        contenidoRaiz = new NodoArbol(p.getId(), p);
+    public NodoArbol contenidoRaiz; /*Atributo contenidoraiz de tipo NodoArbol*/
+ 
+    public PostTree(Publicacion p) { // constructor del atributo contenidoraiz
+        this.contenidoRaiz = new NodoArbol(p);
     }
 
+    //metodo para buscar un nodno por su id, llama al recursivo
     public NodoArbol buscarNodo(int id) {
-
         return buscarRecursivo(contenidoRaiz, id);
     }
+    public NodoArbol buscarRecursivo(NodoArbol p, int id) { // el item p es el que marca el nodo actual
+        if (p == null) return null; // Si es nulo retorna nulo
+        
+        if (p.getId() == id) return p; 
+        // ↑↑↑↑↑↑ Si el id es igual al que se le da, lo retorna 
+        
+        for (NodoArbol hijo : p.getHijos()){ // for para acceder a la lista de hijos
+            NodoArbol encontrado = buscarRecursivo((NodoArbol) hijo, id);
 
-    public NodoArbol buscarRecursivo(NodoArbol p, int id) {
-
-        if (p.getId() == id) {
-
-            return p;
+            if (encontrado != null) return encontrado; 
+            // ↑↑↑↑↑↑ SI el  nodo no es nulo, lo retorna 
         }
-
-        for (NodoArbol hijo : p.getHijos()) {
-
-            NodoArbol encontrado = buscarRecursivo(hijo, id);
-
-            if (encontrado != null) {
-
-                return encontrado;
-            }
-        }
-
         return null;
     }
+    //-----------------------------------------------------------
+    
+    
+    public void agregarComentario(int idPadre, Comentario c) { //Agrega un comentario (hijo) a un nodo padre 
+        NodoArbol padre = buscarNodo(idPadre); /*Busca un nodo con id padre*/
 
-    public void agregarComentario(int idPadre, Comentario c) {
-
-        NodoArbol padre = buscarNodo(idPadre);
-
-        if (padre != null) {
-
-            NodoArbol nuevoComentario = new NodoArbol(c.getId(), c);
-
+        if (padre != null) { /* Si lo encuentra*/
+            NodoArbol nuevoComentario = new NodoArbol(c);
             padre.agregarHijo(nuevoComentario);
-
             System.out.println("Comentario agregado correctamente");
-
         } else {
-
-            System.out.println("No se encontró el nodo padre");
+            System.out.println("No se encontró el nodo padre con esa ID" + idPadre);
         }
+    }
+
+    void mostrarInOrden() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
 

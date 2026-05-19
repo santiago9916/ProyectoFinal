@@ -1,35 +1,19 @@
 /*
 almacena la popularidad de una publicacion
-*/
-package com.mycompany.proyectofinal3;
+ */
+package proyectofinaled1;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//Representa el ranking de popularidad
-class NodoAVL {
-    int popularidad;
-    int publicacionId;
-    int altura;
+public class PopularityIndex {
 
-    NodoAVL izquierdo;
-    NodoAVL derecho;
-
-    //Constructor
-    public NodoAVL(int publicacionId, int popularidad) {
-
-        this.publicacionId = publicacionId;
-        this.popularidad = popularidad;
-        this.altura = 1;
-    }
-
-
-    public class PopularityIndex {
     private NodoAVL raiz; //raiz de tipo NodoAVL
 
     /**
-     * Inserta o actualiza la popularidad de una publicación.
-     * Si ya existe, la elimina y la reinserta con la nueva popularidad.
+     * Inserta o actualiza la popularidad de una publicación. Si ya existe, la
+     * elimina y la reinserta con la nueva popularidad.
+     *
      * @param pubId ID de la publicación.
      * @param pop Nuevo valor de popularidad.
      */
@@ -42,7 +26,9 @@ class NodoAVL {
 
     // Inserta un nodo en el AVL balanceado (ordenado por popularidad)
     private NodoAVL insertar(NodoAVL nodo, int pubId, int pop) {
-        if (nodo == null) return new NodoAVL(pubId, pop);
+        if (nodo == null) {
+            return new NodoAVL(pubId, pop);
+        }
 
         if (pop < nodo.popularidad) {
             nodo.izquierdo = insertar(nodo.izquierdo, pubId, pop);
@@ -67,7 +53,9 @@ class NodoAVL {
 
     // Elimina un nodo buscándolo por publicacionId (sin importar popularidad)
     private NodoAVL eliminarPorPublicacionId(NodoAVL nodo, int pubId) {
-        if (nodo == null) return null;
+        if (nodo == null) {
+            return null;
+        }
 
         // Buscar el nodo con el pubId (recorrido in-order)
         if (pubId < nodo.publicacionId) {
@@ -78,8 +66,11 @@ class NodoAVL {
             // Nodo encontrado
             if (nodo.izquierdo == null || nodo.derecho == null) {
                 NodoAVL temp = (nodo.izquierdo != null) ? nodo.izquierdo : nodo.derecho;
-                if (temp == null) return null;
-                else return temp;
+                if (temp == null) {
+                    return null;
+                } else {
+                    return temp;
+                }
             } else {
                 NodoAVL sucesor = getMin(nodo.derecho);
                 nodo.publicacionId = sucesor.publicacionId;
@@ -94,7 +85,9 @@ class NodoAVL {
 
     // Obtiene el nodo con la menor clave (popularidad más baja) - útil para sucesor
     private NodoAVL getMin(NodoAVL nodo) {
-        while (nodo.izquierdo != null) nodo = nodo.izquierdo;
+        while (nodo.izquierdo != null) {
+            nodo = nodo.izquierdo;
+        }
         return nodo;
     }
 
@@ -112,13 +105,15 @@ class NodoAVL {
     private NodoAVL balancear(NodoAVL nodo) {
         int fb = balanceFactor(nodo);
         if (fb > 1) {
-            if (balanceFactor(nodo.izquierdo) < 0)
+            if (balanceFactor(nodo.izquierdo) < 0) {
                 nodo.izquierdo = rotacionIzquierda(nodo.izquierdo);
+            }
             return rotacionDerecha(nodo);
         }
         if (fb < -1) {
-            if (balanceFactor(nodo.derecho) > 0)
+            if (balanceFactor(nodo.derecho) > 0) {
                 nodo.derecho = rotacionDerecha(nodo.derecho);
+            }
             return rotacionIzquierda(nodo);
         }
         return nodo;
@@ -145,8 +140,9 @@ class NodoAVL {
     }
 
     /**
-     * Retorna una lista con los IDs de las 'n' publicaciones más populares.
-     * Usa un recorrido in-order inverso (derecha - raíz - izquierda).
+     * Retorna una lista con los IDs de las 'n' publicaciones más populares. Usa
+     * un recorrido in-order inverso (derecha - raíz - izquierda).
+     *
      * @param n Número de publicaciones a obtener.
      * @return Lista de IDs (máximo 'n' elementos).
      */
@@ -158,12 +154,13 @@ class NodoAVL {
 
     // Recorrido inverso: derecha -> raíz -> izquierda (orden descendente por popularidad)
     private void obtenerTopNRecursivo(NodoAVL nodo, List<Integer> lista, int n) {
-        if (nodo == null || lista.size() >= n) return;
+        if (nodo == null || lista.size() >= n) {
+            return;
+        }
         obtenerTopNRecursivo(nodo.derecho, lista, n);
         if (lista.size() < n) {
             lista.add(nodo.publicacionId);
             obtenerTopNRecursivo(nodo.izquierdo, lista, n);
         }
-    }
     }
 }

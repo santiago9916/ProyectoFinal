@@ -1,17 +1,15 @@
 /*
 representa a un usuario en el sistema
-*/
-package com.mycompany.proyectfinal;
+ */
+package proyectofinaled1;
 
 public class Usuario {
 
     private int id;
     private String username;
 
- 
     public Usuario() {
     }
-
 
     public Usuario(int id, String username) {
 
@@ -19,12 +17,10 @@ public class Usuario {
         this.username = username;
     }
 
-
     public Usuario(String username) {
 
         this.username = username;
     }
-
 
     public int getId() {
         return id;
@@ -42,3 +38,4 @@ public class Usuario {
         this.username = username;
     }
 }
+

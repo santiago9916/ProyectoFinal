@@ -1,13 +1,13 @@
 /*
 nodo de la lista doblemente enlazada para el historial de actividad
-*/
-package com.mycompany.proyectofinal3;
+ */
+package proyectofinaled1;
 
 public class NodoDoble {
+
     String descripcion;
     NodoDoble siguiente;
-    NodoDoble anterios;
-    NodoDoble anterior;
+    NodoDoble anterior; // Eliminé 'anterios'
 
     public String getDescripcion() {
         return descripcion;
@@ -25,14 +25,6 @@ public class NodoDoble {
         this.siguiente = siguiente;
     }
 
-    public NodoDoble getAnterios() {
-        return anterios;
-    }
-
-    public void setAnterios(NodoDoble anterios) {
-        this.anterios = anterios;
-    }
-
     public NodoDoble getAnterior() {
         return anterior;
     }
@@ -40,18 +32,14 @@ public class NodoDoble {
     public void setAnterior(NodoDoble anterior) {
         this.anterior = anterior;
     }
-    
-    
 
-    public NodoDoble(String descripcion, NodoDoble siguiente, NodoDoble anterios, NodoDoble anterior) {
+    public NodoDoble(String descripcion, NodoDoble siguiente, NodoDoble anterior) {
         this.descripcion = descripcion;
         this.siguiente = siguiente;
-        this.anterios = anterios;
         this.anterior = anterior;
     }
-    
-    
-    public NodoDoble(String descripcion){
+
+    public NodoDoble(String descripcion) {
         this.descripcion = descripcion;
     }
 }

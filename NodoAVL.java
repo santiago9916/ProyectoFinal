@@ -1,26 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
+package proyectofinaled1;
 
-public class NodoArbol {
-    private Object data;
-    private List<NodoArbol> hijos;
+public class NodoAVL {
 
-    public NodoArbol(Object data) {
-        this.data = data;
-        this.hijos = new ArrayList<>();
-    }
+    public int popularidad;
+    public int publicacionId;
+    public int altura;
 
-    public void addHijo(NodoArbol hijo) {
-        hijos.add(hijo);
-    }
+    public NodoAVL izquierdo;
+    public NodoAVL derecho;
 
-    public Object getData() { return data; }
-    public List<NodoArbol> getHijos() { return hijos; }
-
-    public void mostrar(String prefijo) {
-        System.out.println(prefijo + data.toString());
-        for (NodoArbol hijo : hijos) {
-            hijo.mostrar(prefijo + "   ");
-        }
+    //Constructor
+    public NodoAVL(int publicacionId, int popularidad) {
+        this.publicacionId = publicacionId;
+        this.popularidad = popularidad;
+        this.altura = 1;
     }
 }
+

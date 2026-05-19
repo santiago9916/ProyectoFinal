@@ -1,18 +1,19 @@
 /*
 representa un comentario en una publicacion o en otro comentario
-*/
-package com.mycompany.proyectfinal;
+ */
+package proyectofinaled1;
 
 public class Comentario {
+
     int id;
-    int autorld;
-    String comentario;
+    int autorId;
+    String contenido;
     long timestamp;
 
-    public Comentario(int id, int autorld, String comentario, long timestamp) {
+    public Comentario(int id, int autorId, String contenido, long timestamp) {
         this.id = id;
-        this.autorld = autorld;
-        this.comentario = comentario;
+        this.autorId = autorId;
+        this.contenido = contenido;
         this.timestamp = timestamp;
     }
 
@@ -24,20 +25,20 @@ public class Comentario {
         this.id = id;
     }
 
-    public int getAutorld() {
-        return autorld;
+    public int getAutorId() {
+        return autorId;
     }
 
-    public void setAutorld(int autorld) {
-        this.autorld = autorld;
+    public void setAutorId(int autorId) {
+        this.autorId = autorId;
     }
 
-    public String getComentario() {
-        return comentario;
+    public String getContenido() {
+        return contenido;
     }
 
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
     }
 
     public long getTimestamp() {
@@ -47,6 +48,5 @@ public class Comentario {
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
-    
-    
 }
+

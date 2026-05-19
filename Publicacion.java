@@ -1,13 +1,14 @@
 /*
 representa una publicacion acha por un usuario
-*/
-package com.mycompany.proyectfinal;
+ */
+package proyectofinaled1;
 
 public class Publicacion {
-int id;
-int autorld;
-String contenido;
-long timestamp;
+
+    int id;
+    int autorId;
+    String contenido;
+    long timestamp;
 
     public int getId() {
         return id;
@@ -17,12 +18,12 @@ long timestamp;
         this.id = id;
     }
 
-    public int getAutorld() {
-        return autorld;
+    public int getAutorId() {
+        return autorId;
     }
 
-    public void setAutorld(int autorld) {
-        this.autorld = autorld;
+    public void setAutorId(int autorId) {
+        this.autorId = autorId;
     }
 
     public String getContenido() {
@@ -41,15 +42,10 @@ long timestamp;
         this.timestamp = timestamp;
     }
 
-    public Publicacion(int id, int autorld, String contenido, long timestamp) {
+    public Publicacion(int id, int autorId, String contenido, long timestamp) {
         this.id = id;
-        this.autorld = autorld;
+        this.autorId = autorId;
         this.contenido = contenido;
         this.timestamp = timestamp;
     }
-
-    int getid() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 }

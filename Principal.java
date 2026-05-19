@@ -1,57 +1,110 @@
+package proyectofinaled1;
+
 public class Principal {
 
     public static void main(String[] args) {
 
+        /*
+        Se crea el administrador de usuarios
+         */
         UserManager usuarios = new UserManager();
 
-        usuarios.registrarUsuarios("Santiago");
-        usuarios.registrarUsuarios("Maria");
+        /*
+        Registro de usuarios
+         */
+        usuarios.registrarUsuario("Santiago");
+        usuarios.registrarUsuario("Maria");
 
-        Publicacion p1 =
-            new Publicacion(1, "Hola mundo");
+        /*
+        Creacion de publicaciones
+        id, autorId, contenido y fecha
+         */
+        Publicacion p1
+                = new Publicacion(
+                        1,
+                        1,
+                        "Hola mundo",
+                        System.currentTimeMillis()
+                );
 
-        Publicacion p2 =
-            new Publicacion(2, "Aprendiendo Java");
+        Publicacion p2
+                = new Publicacion(
+                        2,
+                        1,
+                        "Aprendiendo Java",
+                        System.currentTimeMillis()
+                );
 
-        Publicacion p3 =
-            new Publicacion(3, "Estructuras de Datos");
+        Publicacion p3
+                = new Publicacion(
+                        3,
+                        2,
+                        "Estructuras de Datos",
+                        System.currentTimeMillis()
+                );
 
-   
-        PostTree arbol = new PostTree();
+        /*
+        Se crea el arbol usando una publicacion raiz
+         */
+        PostTree arbol = new PostTree(p1);
 
-        arbol.insertar(p1);
-        arbol.insertar(p2);
-        arbol.insertar(p3);
-
-        System.out.println("=== PUBLICACIONES ORDENADAS ===");
-
-        arbol.mostrarInOrden();
-
-  
+        /*
+        Historial de actividades
+         */
         ActivityHistory historial = new ActivityHistory();
 
-        historial.registrarActividad( "Santiago creó una publicación" );
+        /*
+        Registro de actividades
+         */
+        historial.registrarActividad(
+                "Santiago creó una publicación"
+        );
 
-        historial.registrarActividad("Maria comentó una publicación");
+        historial.registrarActividad(
+                "Maria comentó una publicación"
+        );
 
-        historial.registrarActividad("Santiago dio like");
+        historial.registrarActividad(
+                "Santiago dio like"
+        );
 
+        /*
+        Mostrar historial
+         */
         System.out.println(" HISTORIAL ");
 
-        historial.mostrarHistorial();
+        System.out.println(
+                historial.obtenerUltimasActividades(10)
+        );
 
-  
+        /*
+        Buscar una publicacion por id
+         */
         System.out.println(" BUSQUEDA ");
 
-        Publicacion encontrada = arbol.buscar(2);
+        NodoArbol encontrado = arbol.buscarNodo(1);
 
-        if (encontrada != null) {
+        /*
+        Si encuentra el nodo muestra el contenido
+         */
+        if (encontrado != null) {
 
-            System.out.println( "Publicación encontrada: "+ encontrada.getContenido() );
+            Publicacion pub
+                    = (Publicacion) encontrado.getData();
+
+            System.out.println(
+                    "Publicación encontrada: "
+                    + pub.getContenido()
+            );
 
         } else {
 
-            System.out.println("No se encontró la publicación");
+            /*
+            Mensaje si no encuentra la publicacion
+             */
+            System.out.println(
+                    "No se encontró la publicación"
+            );
         }
     }
 }
